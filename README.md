@@ -11,6 +11,11 @@ root
 　└ gulpfile.js
 ``` 
 
+## 命名規則
+基本的にはBEMを使用。
+WAI-AREAを使用できる場面では、modifireの代わりにaria属性を使用する。
+
+
 ## フォーマット
 
 ### メタルール
@@ -48,21 +53,20 @@ html5に於いて省略できる属性は記述しない
   - HEX形式のカラーコードでRGB形式にできるものはRGB形式で記述する
 - ショートハンドプロパティ
   - 可能な限りショートハンドプロパティで記述する
-- スタイルを当てる要素にはクラスを指定する
 - 入れ子は3階層まで
 
 ```HTML
 <div class="media">
-  <div class="media-thumb">
+  <div class="media__thumb">
     <img src="" alt="">
   </div>
-  <!-- /.media-thumb -->
+  <!-- /.media__thumb -->
   
-  <div class="media-profile">
-    <p>名前</p>
-    <p>テキスト</p>
+  <div class="media__profile">
+    <p class="media__name">名前</p>
+    <p class="media__txt">テキスト</p>
   </div>
-  <!-- /.media-profile -->
+  <!-- /.media__profile -->
 </div>
 <!-- /.media -->
 ```
@@ -76,10 +80,13 @@ NG
   background-repeat: no-repeat;
   background-position: top left;
   
-  .media-profile {
-    p {
-      color: #eebbcc;
-    }
+  &__profile {
+    width: 500px;
+  }
+  
+  &__name {
+    color: #eebbcc;
+    font-size: 18px;
   }
 }
 ```
@@ -89,35 +96,17 @@ OK
 ----------*/
 .media {
   background: url(path) no-repeat top left;
-}
-//.media
-
-.media-profile {
-  p {
+  
+  &__profile {
+    width: 500px;
+  }
+  
+  &__name {
     color: #ebc;
+    font-size: 18px;
   }
 }
-//.media-profile
-```
-
-## 命名規則
-基本的にはBEMを使用。
-WAI-AREAを使用できる場面では、modifireの代わりにaria属性を使用する。
-```HTML
-<nav class="gnav">
-  <ul class="gnav__inner">
-    <li class="gnav__item">
-      <a href="/" aria-cuurent="false">HOME</a>
-     </li>
-    <li class="gnav__item">
-      <a href="/" aria-cuurent="true">ABOUT</a>
-    </li>
-    <li class="gnav__item">
-      <a href="/" aria-cuurent="false">WORKS</a>
-    </li>
-  </ul>
-</nav>
-<!-- /.gnav -->
+//.media
 ```
 
 ## HTMLルール
