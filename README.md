@@ -39,50 +39,36 @@ html5に於いて省略できる属性は記述しない
 <link rel="stylesheet" href="style.css">
 ```
 
-### インデント
-半角スペース2つ分でインデントする。
+### 基本的な書式
+- インデント
+  - 半角スペース2つ分でインデントする。
+- コメントの書き方
+  - HTMLでは、要素を子要素に持つ、一番外側のモジュールやセクションのあとにコメントを書く。
+- カラーコード
+  - HEX形式のカラーコードでRGB形式にできるものはRGB形式で記述する。
+
 ```HTML
-<ul>
-  <li>リスト1</li>
-  <li>リスト2</li>
-</ul>
+<div class="media">
+  <div class="media-thumb">
+    <img src="" alt="">
+  </div>
+  <!-- /.media-thumb -->
+  
+  <div class="media-profile">
+    <p>名前</p>
+    <p>テキスト</p>
+  </div>
+  <!-- /.media-profile -->
+</div>
+<!-- /.media -->
 ```
+
 ```CSS
-.item {
-  color: red;
-}
-```
-
-### コメントの書き方
-HTMLでは、要素を子要素に持つ、
-一番外側のモジュールやセクションのあとにコメントを書く。
-`<!-- /.class名 -->`
-```HTML
-<ul class="list">
-  <li>リスト1</li>
-  <li>リスト2</li>
-  <li>リスト3</li>
-</ul>
-<!-- /.list -->
-```
-CSSも同じく
-```SCSS
-.list {
-  color: red;
-}
-//.list
-```
-
-### カラーコード
-HEX形式のカラーコードで省略できるものは省略する。
-```css
-//NG
-p {
+.media {
+  //NG
   color: #eebbcc;
-}
-
-//OK
-p {
+  
+  //OK
   color: #ebc;
 }
 ```
