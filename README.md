@@ -41,11 +41,15 @@ html5に於いて省略できる属性は記述しない
 
 ### 基本的な書式
 - インデント
-  - 半角スペース2つ分でインデントする。
+  - 半角スペース2つ分でインデントする
 - コメントの書き方
-  - HTMLでは、要素を子要素に持つ、一番外側のモジュールやセクションのあとにコメントを書く。
+  - HTMLでは、要素を子要素に持つ、一番外側のモジュールやセクションのあとにコメントを書く
 - カラーコード
-  - HEX形式のカラーコードでRGB形式にできるものはRGB形式で記述する。
+  - HEX形式のカラーコードでRGB形式にできるものはRGB形式で記述する
+- ショートハンドプロパティ
+  - 可能な限りショートハンドプロパティで記述する
+- スタイルを当てる要素にはクラスを指定する
+- 入れ子は3階層まで
 
 ```HTML
 <div class="media">
@@ -63,14 +67,37 @@ html5に於いて省略できる属性は記述しない
 <!-- /.media -->
 ```
 
-```CSS
+```SCSS
+/*----------
+NG
+----------*/
 .media {
-  //NG
-  color: #eebbcc;
+  background-image: url(path);
+  background-repeat: no-repeat;
+  background-position: top left;
   
-  //OK
-  color: #ebc;
+  .media-profile {
+    p {
+      color: #eebbcc;
+    }
+  }
 }
+```
+```SCSS
+/*----------
+OK
+----------*/
+.media {
+  background: url(path) no-repeat top left;
+}
+//.media
+
+.media-profile {
+  p {
+    color: #ebc;
+  }
+}
+//.media-profile
 ```
 
 ## 命名規則
