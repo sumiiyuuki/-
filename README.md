@@ -55,7 +55,7 @@ html5に於いて省略できる属性は記述しない
 
 ### コメントの書き方
 HTMLでは、要素を子要素に持つ、
-モジュールやセクションのあとにコメントを書く。
+一番外側のモジュールやセクションのあとにコメントを書く。
 `<!-- /.class名 -->`
 ```HTML
 <ul class="list">
@@ -88,7 +88,24 @@ p {
 ```
 
 ## 命名規則
-
+基本的にはBEMを使用。
+WAI-AREAを使用できる場面では、modifireの代わりにaria属性を使用する。
+```HTML
+<nav class="gnav">
+  <ul class="gnav__inner">
+    <li class="gnav__item">
+      <a href="/" aria-cuurent="false">HOME</a>
+     </li>
+    <li class="gnav__item">
+      <a href="/" aria-cuurent="true">ABOUT</a>
+    </li>
+    <li class="gnav__item">
+      <a href="/" aria-cuurent="false">WORKS</a>
+    </li>
+  </ul>
+</nav>
+<!-- /.gnav -->
+```
 
 ## HTMLルール
 
