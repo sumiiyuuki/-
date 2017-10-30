@@ -18,33 +18,10 @@ WAI-AREAを使用できる場面では、modifireの代わりにaria属性を使
 
 ## フォーマット
 
-### メタルール
-
-#### -- ドキュメントタイプ
-HTML5でのマークアップ
-```HTML
-<!DOCTYPE html>
-```
-
-#### -- 文字エンコード
-UTF-8を使用
-```HTML
-<meta charset="utf-8">
-```
-
-#### -- 属性
-html5に於いて省略できる属性は記述しない
-```HTML
-<!-- NG -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link rel="stylesheet" type="text/css" href="style.css"/>
-
-<!-- OK -->
-<meta charset=utf-8">
-<link rel="stylesheet" href="style.css">
-```
-
 ### 基本的な書式
+- HTML5でのマークアップ
+- UTF-8を使用
+- html5に於いて省略できる属性は記述しない
 - インデント
   - 半角スペース2つ分でインデントする
 - コメントの書き方
