@@ -52,7 +52,7 @@ var conf = {
 }
 
 // コンポーネント一覧の設定
-fractal.set('project.title', 'テンプレート');
+fractal.set('project.title', 'Components');
 fractal.web.set('builder.dest', './build/component/');
 fractal.docs.set('path', './src/library/docs/');
 fractal.components.set('path', './src/library/components/');
