@@ -53,13 +53,13 @@ var conf = {
 
 // コンポーネント一覧の設定
 fractal.set('project.title', 'テンプレート');
-fractal.web.set('builder.dest', './build/component');
-fractal.docs.set('path', './src/library/docs');
-fractal.components.set('path', './src/library/components');
+fractal.web.set('builder.dest', './build/component/');
+fractal.docs.set('path', './src/library/docs/');
+fractal.components.set('path', './src/library/components/');
 
 
 
-// 
+//
 // Babel(ECMAScript6) をJSにコンパイル
 // ========================================
 gulp.task('babel-build', function() {
@@ -77,13 +77,13 @@ gulp.task('babel-build', function() {
 });
 
 
-// 
+//
 // SCSS のコンパイル
 // ========================================
 gulp.task('sass-build', function() {
   return gulp.src(conf['sass']['src'])
     .pipe(sourcemap.init())
-    .pipe(sass(conf['sass']['option']).on('error', sass.logError))
+    .pipe(sass({outputStyle: 'expanded'},conf['sass']['option']).on('error', sass.logError))
     .pipe(gulpif(! RELEASE, sourcemap.write()))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
@@ -93,7 +93,7 @@ gulp.task('sass-build', function() {
 });
 
 
-// 
+//
 // HTMLテンプレート(nunjucks) のコンパイル
 // ========================================
 gulp.task('html-build', function() {
@@ -105,7 +105,7 @@ gulp.task('html-build', function() {
 });
 
 
-// 
+//
 // 静的ファイルのコピー
 // ========================================
 gulp.task('static-copy', function() {
@@ -114,7 +114,7 @@ gulp.task('static-copy', function() {
 })
 
 
-// 
+//
 // コンポーネント一覧のコンパイル
 // ========================================
 gulp.task('fractal-build', function(){
@@ -129,7 +129,7 @@ gulp.task('fractal-build', function(){
 });
 
 
-// 
+//
 // 全ビルド & コピータスクの実行
 // ========================================
 gulp.task('build', function() {
@@ -145,7 +145,7 @@ gulp.task('build', function() {
 });
 
 
-// 
+//
 // ファイルが更新されたらビルドを実行
 // ========================================
 gulp.task('watch', ['build'], function(callback) {
@@ -157,7 +157,7 @@ gulp.task('watch', ['build'], function(callback) {
 });
 
 
-// 
+//
 // コンパイル済みファイルの削除
 // ========================================
 gulp.task('clean', function(callback) {
@@ -165,7 +165,7 @@ gulp.task('clean', function(callback) {
 });
 
 
-// 
+//
 // プレビューサーバーの起動
 // ========================================
 gulp.task('serve', ['build'], function() {
