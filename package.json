@@ -1,17 +1,14 @@
 {
-  "name": "component",
+  "name": "Template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "fractal start --sync",
-    "build": "fractal build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@frctl/fractal": "^1.1.7",
     "babel-eslint": "^4.1.6",
     "babel-preset-es2015": "^6.3.13",
     "babelify": "^7.2.0",

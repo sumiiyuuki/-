@@ -15,9 +15,6 @@ var rimraf       = require('rimraf');
 var minimist     = require('minimist');
 var webserver    = require('gulp-webserver');
 
-var fractal = require('@frctl/fractal').create();
-var logger = fractal.cli.console;
-
 var argv = minimist(process.argv.slice(2));
 var RELEASE = !! argv.release;
 
@@ -42,20 +39,10 @@ var conf = {
     src: './src/static/**/*',
     dest: './build/'
   },
-  fractal: {
-    src: './src/library/**/*',
-    dest: './build/component/'
-  },
   server: {
     port: 3000
   }
 }
-
-// コンポーネント一覧の設定
-fractal.set('project.title', 'Components');
-fractal.web.set('builder.dest', './build/component/');
-fractal.docs.set('path', './src/library/docs/');
-fractal.components.set('path', './src/library/components/');
 
 
 
@@ -115,21 +102,6 @@ gulp.task('static-copy', function() {
 
 
 //
-// コンポーネント一覧のコンパイル
-// ========================================
-gulp.task('fractal-build', function(){
-    const builder = fractal.web.builder();
-    builder.on('progress', (completed, total) => logger.update(`Exported ${completed} of ${total} items`, 'info'));
-    builder.on('error', err => logger.error(err.message));
-    return builder.build().then(() => {
-        logger.success('Fractal build completed!');
-    });
-    return gulp.src(conf['fractal']['src'])
-    .pipe(gulp.dest(conf['fractal']['dest']))
-});
-
-
-//
 // 全ビルド & コピータスクの実行
 // ========================================
 gulp.task('build', function() {
@@ -138,8 +110,7 @@ gulp.task('build', function() {
       'babel-build',
       'sass-build',
       'html-build',
-      'static-copy',
-      'fractal-build'
+      'static-copy'
     ]
   );
 });
@@ -153,7 +124,6 @@ gulp.task('watch', ['build'], function(callback) {
   gulp.watch(conf['sass']['src'], ['sass-build']);
   gulp.watch(conf['html']['watch'], ['html-build']);
   gulp.watch(conf['statics']['src'], ['static-copy']);
-  gulp.watch(conf['fractal']['src'], ['fractal-build']);
 });
 
 
