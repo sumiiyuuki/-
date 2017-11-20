@@ -108,6 +108,9 @@ HTML, CSS, JavaScriptに共通するルール。
 - インデントは半スペ2で統一
 - カラーコードは小文字でHEX値を使用
   - 不透明度を表現したい場合はRGBA値も使用可能
+- モジュール間の余白は各モジュールに含め、全てbottomを指定
+  - 上記では補えない余白が必要な場合は、別途marginクラスを設ける
+  - `.l-margin {margin-bottom: 10px;}`,`.l-margin2 {margin-bottom: 20px;}`
 
 ### リセットCSS
 
