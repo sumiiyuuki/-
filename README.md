@@ -6,8 +6,6 @@ HTML, CSS, JavaScriptに共通するルール。
 
 ### 対応ブラウザ
 
-本案件は、下記の環境にて正常に表示・動作することを保証する。
-
 - PC : Internet Explorer 10〜、Firefox最新バージョン、Google Chrome最新バージョン
 - SP : Android 4.0〜、iOS Safari最新バージョン
 
@@ -15,7 +13,7 @@ HTML, CSS, JavaScriptに共通するルール。
 
 コメントには`//`は使用しない。
 
-```CSS
+```SCSS
 /* ====================
 --- > ブロック
 ==================== */
@@ -24,7 +22,7 @@ HTML, CSS, JavaScriptに共通するルール。
 - > エレメント
 -------------------- */
 
-/* -- 状態変化など -- */
+// 状態変化など
 ```
 
 ### 画像ファイル
@@ -41,25 +39,25 @@ HTML, CSS, JavaScriptに共通するルール。
 | 背景 | bg |
 | ロゴ | logo |
 
-### ディレクトリ
+例）btn_icon.svg
 
-ディレクトリ名は下記にする。
+### ディレクトリ
 
 | 種類| 表記 |
 |:---|:---|
-| SCSSディレクトリ | scss |
-| CSSディレクトリ | css |
-| 画像ディレクトリ | images |
-| jsディレクトリ | js |
-| images/css/js 格納ディレクトリ | static |
 | 開発ディレクトリ | src |
+| HTMLディレクトリ | src/html |
+| SCSSディレクトリ | src/scss |
+| images/css/js 格納ディレクトリ | src/static |
+| CSSディレクトリ | src/static/css |
+| 画像ディレクトリ | src/static/images |
+| jsディレクトリ | src/static/js |
 | 出力ディレクトリ | build |
 
 ## HTMLルール
 
-- HTML5でのマークアップ
+- HTML5でのセマンティックマークアップ
 - インデントは半スペ2で統一
-- セマンティックなマークアップを心がける
 - 各ブロックのあとに閉じコメントを書く
   - 例）`<!-- /.block -->`
 - 不要な属性は省略する
@@ -69,42 +67,33 @@ HTML, CSS, JavaScriptに共通するルール。
 
 ### 命名規則
 
-- 基本的にBEMの命名規則を使用する。
+- BEM
 - Modifireに関しては、アクセシビリティを考慮してWAI-ARIAを使用する。
 - Jsのトリガー要素には`js-`の接頭辞を使用する。
 - レイアウト要素には`l-`の接頭辞を使用する。
-- テーマ要素には`theme-`の接頭辞を使用する。
 
 ```HTML
-<header class="l-header">
-  <nav class="nav">
-    <button type="button" class="nav__btn js-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <!-- /.nav__btn -->
-
-    <ul class="nav__inner">
-      <li class="nav__item">
-        <a href="" aria-current="false">項目1</a>
-      </li>
-      <li class="nav__item">
-        <a href="" aria-current="true">項目2</a>
-      </li>
-      <li class="nav__item">
-        <a href="" aria-current="false">項目2</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-<!-- /.l-header -->
+<nav class="nav">
+  <ul class="nav__inner">
+    <li class="nav__item">
+      <a href="" aria-current="false">項目1</a>
+    </li>
+    <li class="nav__item">
+      <a href="" aria-current="true">項目2</a>
+    </li>
+    <li class="nav__item">
+      <a href="" aria-current="false">項目2</a>
+    </li>
+  </ul>
+</nav>
+<!-- /.nav -->
 ```
 
 ## CSSルール
 
 - SCSS記法で書くこと
   - コンパイル形式は`expanded`を使用
+- セレクタのネストは3階層で留める
 - インデントは半スペ2で統一
 - カラーコードは小文字でHEX値を使用
   - 不透明度を表現したい場合はRGBA値も使用可能
@@ -116,7 +105,7 @@ HTML, CSS, JavaScriptに共通するルール。
 
 このプロジェクトでは 「Eric Meyer’s “Reset CSS” 2.0」 を使用。
 
-### 設計
+### ディレクトリ構造
 
 ```
 scss
@@ -139,20 +128,19 @@ scss
     └ _top.scss
 ```
 
-ディレクトリ | 用途
----------- | ---------------------------------- |
-base       | ベースとなるスタイルを格納。
-layout     | レイアウトスタイルを格納。
-module     | モジュールスタイルを格納。
-theme      | テーマによって切り替える際のスタイルを格納。
+ディレクトリ          | 用途
+------------------- | ---------------------------------- |
+base                | ベースとなるスタイルやリセットCSSを格納。
+base/variable       | 変数を格納。
+layout              | レイアウトスタイルを格納。
+module              | モジュールスタイルを格納。
+theme               | テーマによって切り替える際のスタイルを格納。
 
 ## 禁止事項
 
-- セレクタのネストは3階層で留める
-- クラス名になるべく見た目を反映しない
-  - 見た目以外の理由がない場合は最終手段として可能とする
+- クラス名に見た目を反映しない
 - HTML内にスタイルは記述しない
 
 ## コミットメッセージ
 
-【ページ名】作業した内容と理由
+【ページ名】作業した内容 - 理由
