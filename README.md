@@ -105,7 +105,7 @@ HTML, CSS, JavaScriptに共通するルール。
 
 このプロジェクトでは 「Eric Meyer’s “Reset CSS” 2.0」 を使用。
 
-### ディレクトリ構造
+### ディレクトリ構造
 
 ```
 scss
